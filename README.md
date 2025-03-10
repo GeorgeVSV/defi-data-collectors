@@ -4,20 +4,30 @@
 DeFi Data Collectors is a **modular, open-source data pipeline** for fetching raw on-chain data from various DeFi protocols. It provides **institutional-grade** data collection for **Risk Engine** and other blockchain analytics projects.
 
 ## Supported Data Sources
-- **Aave** – Fetches collateral prices, loan values, and liquidation thresholds.
+- **Aave** – Fetches collateral prices, loan values, and liquidation thresholds across networks.
 - **More protocols coming soon...**
 
 ## Project Structure
 ```
 defi-data-collectors/
-│── collectors/             # Data collection modules
-│   ├── aave_fetcher.py     # Fetches Aave data
+│── collectors/             # Protocol-based data collectors
+│   ├── aave_fetcher.py     # Fetches Aave data across networks
 │   ├── __init__.py
 │
-│── tests/                  # Unit tests for collectors
-│── requirements.txt         # Dependencies
-│── README.md                # Documentation
-│── .gitignore               # Ignore unnecessary files
+│── utils/                  # Shared utility functions
+│   ├── web3_connector.py   # Manages blockchain RPC connections
+│   ├── contract_loader.py  # Loads contract ABIs and interacts with smart contracts
+│   ├── __init__.py
+│
+│── config/                 # Configurations and registries
+│   ├── networks.json       # Stores RPC endpoints for supported networks
+│   ├── protocols.json      # Stores contract addresses for supported protocols
+│   ├── __init__.py
+│
+│── tests/                  # Unit tests
+│── requirements.txt        # Dependencies
+│── README.md               # Documentation
+│── .gitignore              # Ignore unnecessary files
 ```
 
 ## Installation
@@ -29,7 +39,7 @@ pip install -r requirements.txt
 ```
 
 ### Using with Risk Engine
-DeFi Data Collectors is designed to work with **[Risk Engine](https://github.com/GeorgeVSV/defi-risk-engine.git)** as a submodule.
+DeFi Data Collectors is designed to work with **[Risk Engine](https://github.com/yourusername/risc-engine)** as a submodule.
 
 If you're using this inside **Risk Engine**, update the submodule:
 ```bash
