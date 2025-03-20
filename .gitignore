@@ -1,4 +1,6 @@
+__pycache__/
 .venv
 .env
 sbx.ipynb
 test.py
+logs
